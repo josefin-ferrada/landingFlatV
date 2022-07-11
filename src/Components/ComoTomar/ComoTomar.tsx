@@ -36,7 +36,7 @@ export const ComoTomar = () => {
           mr={[10, 10, 10, 10]}
         >
          
-            <Text fontSize="24px" textAlign="initial" mr={[0,0,35,35 ]}>
+            <Box fontSize="24px" textAlign="initial" mr={[0,0,35,35 ]}>
             <Box display="flex" alignItems="center" mb={30} max-width="fit-content" alignSelf="center">
             <Image mr="30px"src={agua} alt="Dan Abramov"/> <Text fontSize="18px">Toma 1 cápsula al día</Text>
             </Box>
@@ -47,7 +47,7 @@ export const ComoTomar = () => {
             <Image mr="30px"src={calendario} alt="Dan Abramov"/> <Text fontSize="18px">Curso de tratamiento recomendado - 1 mes</Text>
             </Box>
             
-            </Text>
+            </Box>
             </Box>
             <Image src={product} alt="Dan Abramov" maxW="fit-content" alignSelf="center"/>
           

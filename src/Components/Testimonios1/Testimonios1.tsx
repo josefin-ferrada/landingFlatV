@@ -36,7 +36,7 @@ export const Testimonios1 = () => {
           mr={[10, 10, 10, 10]}
         >
           <Center flexDirection={["column", "column", "column", "inherit"]} alignItems="initial">
-            <Text fontSize="24px" textAlign="initial" mr={[0,0,35,35 ]}>
+            <Box fontSize="24px" textAlign="initial" mr={[0,0,35,35 ]}>
               <Text fontWeight={700} mb={10}>¡El producto quemagrasas más popular del mundo! </Text>
               <Text fontSize={18}>Laura Maldonado,
               asesora en nutrición de Diet Flat V, recomienda consumirlo antes del desayuno y la cena,
@@ -45,7 +45,7 @@ export const Testimonios1 = () => {
               ciclo de adelgazamiento es de un mes. Este período debería ser
               suficiente para alcanzar resultados impresionantes.
                 </Text>
-            </Text>
+            </Box>
             <Image src={product} alt="Dan Abramov" w="fit-content"  sx={{ filter: "drop-shadow(5px 5px 5px #222)" }} alignSelf="center"/>
           </Center>
         </Box>
