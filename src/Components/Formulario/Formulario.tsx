@@ -16,7 +16,7 @@ export const Formulario = ({ end }) => {
   const apiKey = 'KuZ2ThsRXHedjuXcsnCTFfnQGDan6AWtWJvDX4eMRmUPHc3gFP66WkRnj52Zbsk74DYsNRKK9CqtQYbeCjDbh4YhEUzS8GThcv2BjmZTBgjG9jJB98X6AjfrnyhPy44SXZDbkAQwHreWE6vctawvmhxB7YuwT2gCP2aj42WMufcjDPQzEND9AMdJGeSprN5yck6wXB6XB27xRs52WcrQpbqBUYBVQenQuGy5JsTVeqE4ZW92kxKjXT5mGbQXEzwV'
     const fetchData = () => {
       
-      fetch(`http://api-blacksteel.clokpi.com/api/blacksteel/services/lead/rs?order_id=000000000001&phone=${phone}&name=${name}&api_key=${apiKey}&good_id=34300&canal=prueba&anunciante=miguel`, { mode: "no-cors"} )
+      fetch(`https://api-blacksteel.clokpi.com/api/blacksteel/services/lead/rs?order_id=000000000001&phone=${phone}&name=${name}&api_key=${apiKey}&good_id=34300&canal=prueba&anunciante=miguel`, { mode: "no-cors"} )
       .then(res => {
         console.log(res)
       })
