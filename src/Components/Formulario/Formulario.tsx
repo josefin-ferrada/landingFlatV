@@ -1,6 +1,4 @@
 import React from "react";
-import ReactPixel from 'react-facebook-pixel';
-// import Axios from "axios";
 import {
   FormControl,
   FormHelperText,
@@ -10,41 +8,39 @@ import {
 } from "@chakra-ui/react";
 
 export const Formulario = ({ end }) => {
+  const [phone, setPhone] = React.useState(0);
+  const [name, setName] = React.useState("");
 
+  const apiKey =
+    "KuZ2ThsRXHedjuXcsnCTFfnQGDan6AWtWJvDX4eMRmUPHc3gFP66WkRnj52Zbsk74DYsNRKK9CqtQYbeCjDbh4YhEUzS8GThcv2BjmZTBgjG9jJB98X6AjfrnyhPy44SXZDbkAQwHreWE6vctawvmhxB7YuwT2gCP2aj42WMufcjDPQzEND9AMdJGeSprN5yck6wXB6XB27xRs52WcrQpbqBUYBVQenQuGy5JsTVeqE4ZW92kxKjXT5mGbQXEzwV";
+  const idNumber = Math.floor(
+    Math.pow(10, 12 - 1) +
+      Math.random() * (Math.pow(10, 12) - Math.pow(10, 12 - 1) - 1)
+  );
 
-ReactPixel.init('1245470039549197');
-
-
-
-  const [phone, setPhone] = React.useState(0)
-  const [name, setName] = React.useState('')
-
-
-  const apiKey = 'KuZ2ThsRXHedjuXcsnCTFfnQGDan6AWtWJvDX4eMRmUPHc3gFP66WkRnj52Zbsk74DYsNRKK9CqtQYbeCjDbh4YhEUzS8GThcv2BjmZTBgjG9jJB98X6AjfrnyhPy44SXZDbkAQwHreWE6vctawvmhxB7YuwT2gCP2aj42WMufcjDPQzEND9AMdJGeSprN5yck6wXB6XB27xRs52WcrQpbqBUYBVQenQuGy5JsTVeqE4ZW92kxKjXT5mGbQXEzwV'
-    const fetchData = () => {
-      
-      fetch(`http://api-blacksteel.clokpi.com/api/blacksteel/services/lead/rs?order_id=000000000002&phone=${phone}&name=${name}&api_key=${apiKey}&good_id=34300&canal=landingReact&anunciante=trifuerza`, {
-        method: "POST" })
-      .then(res => {
-        console.log(res)
+  const fetchData = () => {
+    fetch(
+      `http://api-blacksteel.clokpi.com/api/blacksteel/services/lead/rs?order_id=${idNumber}&phone=${phone}&name=${name}&api_key=${apiKey}&good_id=34300&canal=landingReact&anunciante=trifuerza`,
+      {
+        method: "POST",
+      }
+    )
+      .then((res) => {
+        console.log(res);
       })
-      .catch(err => {
-        console.log(err)
-      })
-    };
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    const handleInputChange = (e) => setName(e.target.value)
-    const handlePhoneChange = (e) => setPhone(e.target.value)
+  const handleInputChange = (e) => setName(e.target.value);
+  const handlePhoneChange = (e) => setPhone(e.target.value);
 
-    const handleSubmit = () => {
-      ReactPixel.trackSingle('1245470039549197', 'Purchase', {
-        value: 29990,
-        currency: 'CLP',
-      }); // For tracking default events.
-      fetchData()
-    }
+  const handleSubmit = () => {
+    fetchData();
+  };
 
-    // console.log(phone, name)
+  // console.log(phone, name)
 
   return (
     <Box
