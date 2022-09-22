@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import ReactGA from 'react-ga';
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "./index.css";
 import "slick-carousel/slick/slick.css"; 
@@ -14,6 +15,8 @@ const breakpoints = {
   xl: '1200px',
   '2xl': '1536px',
 }
+
+ReactGA.initialize('G-PSK3KX1CQ0'); 
 
 const theme = extendTheme({ breakpoints })
 

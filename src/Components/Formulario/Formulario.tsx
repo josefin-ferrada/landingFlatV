@@ -88,6 +88,7 @@ export const Formulario = ({ end }) => {
           mt={10}
           size="xl"
           colorScheme="teal"
+          id="purchase"
           // isLoading={props.isSubmitting}
           type="submit"
           onClick={handleSubmit}
