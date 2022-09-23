@@ -20,7 +20,7 @@ export const Formulario = ({ end }) => {
 
   const fetchData = () => {
     fetch(
-      `https://api-blacksteel.clokpi.com/api/blacksteel/services/lead/rs?order_id=${idNumber}&phone=${phone}&name=${name}&api_key=${apiKey}&good_id=34300&canal=landingReact&anunciante=trifuerza`,
+      `http://api-blacksteel.clokpi.com/api/blacksteel/services/lead/rs?order_id=${idNumber}&phone=${phone}&name=${name}&api_key=${apiKey}&good_id=34300&canal=landingReact&anunciante=trifuerza`,
       {
         method: "POST",
       }
