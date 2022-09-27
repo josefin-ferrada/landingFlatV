@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import {
   FormControl,
   FormHelperText,
@@ -7,9 +8,17 @@ import {
   Button,
 } from "@chakra-ui/react";
 
+
 export const Formulario = ({ end }) => {
   const [phone, setPhone] = React.useState(0);
   const [name, setName] = React.useState("");
+  const [loading, setLoading] = React.useState(false)
+  const [success, setButtonSuccess] = React.useState(false)
+  const navigate = useNavigate();
+  
+  function handleClick() {
+    navigate('/sendForm')
+  }
 
   const apiKey =
     "KuZ2ThsRXHedjuXcsnCTFfnQGDan6AWtWJvDX4eMRmUPHc3gFP66WkRnj52Zbsk74DYsNRKK9CqtQYbeCjDbh4YhEUzS8GThcv2BjmZTBgjG9jJB98X6AjfrnyhPy44SXZDbkAQwHreWE6vctawvmhxB7YuwT2gCP2aj42WMufcjDPQzEND9AMdJGeSprN5yck6wXB6XB27xRs52WcrQpbqBUYBVQenQuGy5JsTVeqE4ZW92kxKjXT5mGbQXEzwV";
@@ -19,28 +28,31 @@ export const Formulario = ({ end }) => {
   );
 
   const fetchData = () => {
+    setLoading(true)
     fetch(
-      `http://api-blacksteel.clokpi.com/api/blacksteel/services/lead/rs?order_id=${idNumber}&phone=${phone}&name=${name}&api_key=${apiKey}&good_id=34300&canal=landingReact&anunciante=trifuerza`,
+      `https://api-blacksteel.clokpi.com/api/blacksteel/services/lead/rs?order_id=${idNumber}&phone=${phone}&name=${name}&api_key=${apiKey}&good_id=34300&canal=trifuerza&anunciante=landing1`,
       {
         method: "POST",
       }
     )
       .then((res) => {
+        setLoading(false)
+        setButtonSuccess(true)
         console.log(res);
       })
       .catch((err) => {
+        setLoading(false)
         console.log(err);
       });
   };
 
   const handleInputChange = (e) => setName(e.target.value);
-  const handlePhoneChange = (e) => setPhone(e.target.value);
+  const handlePhoneChange = (e) => setPhone(e.target.value.trim().replace('+', ''));
 
   const handleSubmit = () => {
+    handleClick();
     fetchData();
-  };
-
-  // console.log(phone, name)
+  }
 
   return (
     <Box
@@ -69,7 +81,7 @@ export const Formulario = ({ end }) => {
         </FormHelperText>
         <Input
           id="phone"
-          type="phone"
+          type="number"
           borderRadius="none"
           borderTop="none"
           borderLeft="none"
@@ -77,6 +89,7 @@ export const Formulario = ({ end }) => {
           borderColor="#cbd5e0"
           borderBottom={"1px solid #cbd5e0"}
           onChange={handlePhoneChange}
+          maxLength={10}
         />
         <FormHelperText fontSize="16px" textAlign="left">
           Teléfono
@@ -87,13 +100,13 @@ export const Formulario = ({ end }) => {
           minH="40px"
           mt={10}
           size="xl"
-          colorScheme="teal"
+          colorScheme={success ? 'green' : 'teal'}
           id="purchase"
-          // isLoading={props.isSubmitting}
+          isLoading={loading}
           type="submit"
           onClick={handleSubmit}
         >
-          Obtener una consulta
+          {success ? 'Enviado exitosamente' : 'Obtener una consulta'}
         </Button>
       </FormControl>
     </Box>
